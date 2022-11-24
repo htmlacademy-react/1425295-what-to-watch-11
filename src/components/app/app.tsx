@@ -7,10 +7,12 @@ import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import Player from '../../pages/player/player';
 import Registration from '../../pages/registration/registration';
 import WelcomeScreen from '../../pages/welcome-screen/welcome-screen';
+import { filmDescription } from '../../types/film';
 import { promoFilmProps } from '../../types/promo-film';
+import { usersReviews } from '../../types/usersReviews';
 import PrivateRoute from '../private-route/private-route';
 
-function App({promoFilm}: {promoFilm: promoFilmProps}): JSX.Element {
+function App({promoFilm, films, reviews}: {promoFilm: promoFilmProps; films: filmDescription[]; reviews: usersReviews[]}): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
@@ -34,7 +36,7 @@ function App({promoFilm}: {promoFilm: promoFilmProps}): JSX.Element {
         />
         <Route
           path={AppRoute.Film}
-          element={<MoviePage/>}
+          element={<MoviePage films={films}/>}
         />
         <Route
           path={AppRoute.Review}
