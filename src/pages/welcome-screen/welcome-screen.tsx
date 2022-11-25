@@ -1,9 +1,10 @@
 /* eslint-disable indent */
 import React from 'react';
 import FilmsCard from '../../components/films-card/films-card';
+import { filmDescription } from '../../types/film';
 import { promoFilmProps } from '../../types/promo-film';
 
-function WelcomeScreen({promoFilm}: {promoFilm: promoFilmProps}): JSX.Element {
+function WelcomeScreen({promoFilm, films}: {promoFilm: promoFilmProps; films: filmDescription[]}): JSX.Element {
   return(
     <React.Fragment>
       <section className="film-card">
@@ -103,7 +104,7 @@ function WelcomeScreen({promoFilm}: {promoFilm: promoFilmProps}): JSX.Element {
             </li>
           </ul>
           <div className="catalog__films-list">
-            {Array.from({length: 10}, (_, i) => (<FilmsCard key={i} />))}
+            {films.map((film) => <FilmsCard key={film.id} film={film}/>)}
           </div>
 
           <div className="catalog__more">

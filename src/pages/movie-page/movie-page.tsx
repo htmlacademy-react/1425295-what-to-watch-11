@@ -1,7 +1,6 @@
 import React from 'react';
-import { filmDescription } from '../../types/film';
 
-function MoviePage({films}: {films: filmDescription[]}):JSX.Element {
+function MoviePage():JSX.Element {
   return(
     <React.Fragment>
       <section className="film-card film-card--full">
@@ -35,7 +34,7 @@ function MoviePage({films}: {films: filmDescription[]}):JSX.Element {
 
           <div className="film-card__wrap">
             <div className="film-card__desc">
-              <h2 className="film-card__title">{films[0].name}</h2>
+              <h2 className="film-card__title">The Grand Budapest Hotel</h2>
               <p className="film-card__meta">
                 <span className="film-card__genre">Drama</span>
                 <span className="film-card__year">2014</span>
