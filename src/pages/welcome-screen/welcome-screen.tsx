@@ -1,6 +1,7 @@
 /* eslint-disable indent */
 import React from 'react';
-import FilmsCard from '../../components/films-card/films-card';
+import { Link } from 'react-router-dom';
+import FilmList from '../../components/film-list/film-list';
 import { filmDescription } from '../../types/film';
 import { promoFilmProps } from '../../types/promo-film';
 
@@ -26,7 +27,7 @@ function WelcomeScreen({promoFilm, films}: {promoFilm: promoFilmProps; films: fi
           <ul className="user-block">
             <li className="user-block__item">
               <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                <Link to={'/mylist'}><img src="img/avatar.jpg" alt="User avatar" width="63" height="63" /></Link>
               </div>
             </li>
             <li className="user-block__item">
@@ -104,7 +105,7 @@ function WelcomeScreen({promoFilm, films}: {promoFilm: promoFilmProps; films: fi
             </li>
           </ul>
           <div className="catalog__films-list">
-            {films.map((film) => <FilmsCard key={film.id} film={film}/>)}
+            <FilmList films={films} />
           </div>
 
           <div className="catalog__more">
