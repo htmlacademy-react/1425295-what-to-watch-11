@@ -1,9 +1,11 @@
 /* eslint-disable indent */
 import React from 'react';
-import FilmsCard from '../../components/films-card/films-card';
+import { Link } from 'react-router-dom';
+import FilmList from '../../components/film-list/film-list';
+import { filmDescription } from '../../types/film';
 import { promoFilmProps } from '../../types/promo-film';
 
-function WelcomeScreen({promoFilm}: {promoFilm: promoFilmProps}): JSX.Element {
+function WelcomeScreen({promoFilm, films}: {promoFilm: promoFilmProps; films: filmDescription[]}): JSX.Element {
   return(
     <React.Fragment>
       <section className="film-card">
@@ -25,7 +27,7 @@ function WelcomeScreen({promoFilm}: {promoFilm: promoFilmProps}): JSX.Element {
           <ul className="user-block">
             <li className="user-block__item">
               <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                <Link to={'/mylist'}><img src="img/avatar.jpg" alt="User avatar" width="63" height="63" /></Link>
               </div>
             </li>
             <li className="user-block__item">
@@ -103,7 +105,7 @@ function WelcomeScreen({promoFilm}: {promoFilm: promoFilmProps}): JSX.Element {
             </li>
           </ul>
           <div className="catalog__films-list">
-            {Array.from({length: 10}, (_, i) => (<FilmsCard key={i} />))}
+            <FilmList films={films} />
           </div>
 
           <div className="catalog__more">

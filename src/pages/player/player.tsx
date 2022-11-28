@@ -1,7 +1,9 @@
-function Player(): JSX.Element {
+import { filmDescription } from '../../types/film';
+
+function Player({films}: {films: filmDescription[]}): JSX.Element {
   return (
     <div className="player">
-      <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
+      <video src={films[0].videoLink} className="player__video" poster={films[0].backgroundImage}></video>
 
       <button type="button" className="player__exit">Exit</button>
 

@@ -1,6 +1,11 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
+import { filmDescription } from '../../types/film';
 
-function MoviePage():JSX.Element {
+function MoviePage({films}: {films: filmDescription[]}):JSX.Element {
+  const { id } = useParams<string>();
+  const movies = films.filter((elem) => elem.id === Number(id));
+  const [{name, genre, released, rating, description}] = movies;
   return(
     <React.Fragment>
       <section className="film-card film-card--full">
@@ -34,10 +39,10 @@ function MoviePage():JSX.Element {
 
           <div className="film-card__wrap">
             <div className="film-card__desc">
-              <h2 className="film-card__title">The Grand Budapest Hotel</h2>
+              <h2 className="film-card__title">{name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">Drama</span>
-                <span className="film-card__year">2014</span>
+                <span className="film-card__genre">{genre}</span>
+                <span className="film-card__year">{released}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -82,7 +87,7 @@ function MoviePage():JSX.Element {
               </nav>
 
               <div className="film-rating">
-                <div className="film-rating__score">8,9</div>
+                <div className="film-rating__score">{rating}</div>
                 <p className="film-rating__meta">
                   <span className="film-rating__level">Very good</span>
                   <span className="film-rating__count">240 ratings</span>
@@ -90,9 +95,8 @@ function MoviePage():JSX.Element {
               </div>
 
               <div className="film-card__text">
-                <p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave`&apos;`s friend and protege.</p>
+                <p>{description}</p>
 
-                <p>Gustave prides himself on providing first-className service to the hotel`&apos;`s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave`&apos;`s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>
 
                 <p className="film-card__director"><strong>Director: Wes Anderson</strong></p>
 
