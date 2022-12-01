@@ -12,7 +12,7 @@ function FilmList({films}: FilmProps): JSX.Element {
   console.log(activeCard);
   return (
     <div className="catalog__films-list">
-      {films.map((film) => <FilmsCard key={film.id} film={film} setActiveCard={setActiveCard}/>)}
+      {films.map((film) => <FilmsCard key={film.id} film={film} setActiveCard={setActiveCard} activeCard={activeCard}/>)}
     </div>
   );
 }
