@@ -6,15 +6,17 @@ type FilmProps = {
   films: filmDescription[];
 };
 
-function FilmList({films}: FilmProps): JSX.Element {
+function MoreFilms({films}: FilmProps): JSX.Element {
   const [activeCard, setActiveCard] = useState(0);
   // eslint-disable-next-line no-console
   console.log(activeCard);
   return (
     <div className="catalog__films-list">
-      {films.map((film) => <FilmsCard key={film.id} film={film} setActiveCard={setActiveCard}/>)}
+      {films.map((film) => <FilmsCard key={film.id} film={film} setActiveCard={setActiveCard}/>).slice(0, 4)}
     </div>
   );
 }
 
-export default FilmList;
+export default MoreFilms;
+
+
