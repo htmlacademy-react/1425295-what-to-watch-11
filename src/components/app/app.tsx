@@ -15,7 +15,7 @@ import PrivateRoute from '../private-route/private-route';
 type AppProps = {
    promoFilm: promoFilmProps;
    films: filmDescription[];
-    reviews: usersReviews[];
+  reviews: usersReviews[];
 }
 
 function App({promoFilm, films, reviews}: AppProps): JSX.Element {
