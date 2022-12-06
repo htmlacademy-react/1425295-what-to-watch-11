@@ -14,8 +14,9 @@ function VideoPlayer({posterImage, videoLink, isPlaying}: VideoPlayerProps): JSX
       return;
     }
     if (isPlaying) {
-      videoRef.current.play();
-      return;
+      setTimeout(() => {
+        videoRef.current?.play();
+      }, 1000);
     }
     videoRef.current.load();
   }, [isPlaying]);

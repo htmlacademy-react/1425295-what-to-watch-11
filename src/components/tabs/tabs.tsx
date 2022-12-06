@@ -1,15 +1,9 @@
 import { Fragment, useState } from 'react';
+import { tabsLinks, TabsType } from '../../const';
 import { filmDescription } from '../../types/film';
 import TabDetails from '../tab-details/tab-details';
 import TabOverview from '../tab-overview/tab-overview';
 import TabReviews from '../tab-reviews/tab-reviews';
-
-
-enum TabsType {
-  Overview = 'Overview',
-  Details = 'Details',
-  Reviews = 'Reviews',
-}
 
 type FilmTabsProps = {
   film: filmDescription[];
@@ -30,22 +24,6 @@ function Tabs({film}: FilmTabsProps): JSX.Element {
         return <TabOverview film={film} />;
     }
   };
-
-  const tabsLinks = [
-    {
-      name: 'Overview',
-      id: 1,
-    },
-    {
-      name: 'Details',
-      id: 2,
-    },
-    {
-      name: 'Reviews',
-      id: 3,
-    },
-  ];
-
 
   return (
     <div>
