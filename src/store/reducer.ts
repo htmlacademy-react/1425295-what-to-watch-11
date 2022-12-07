@@ -1,6 +1,7 @@
 // Опишите в нём:
 
 import { createReducer } from '@reduxjs/toolkit';
+import { films } from '../mocks/films';
 import { filmDescription } from '../types/film';
 import { changeGenre, getFilmsList } from './action';
 
@@ -17,7 +18,7 @@ type TInitialState = {
 
 const initialState: TInitialState = {
   genre: 'All genres',
-  filmsList: [],
+  filmsList: films,
 };
 
 

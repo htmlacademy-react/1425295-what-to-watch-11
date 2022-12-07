@@ -9,20 +9,14 @@ type FilmProps = {
 };
 
 function FilmList({films} : FilmProps): JSX.Element {
-  const currentFilms = useAppSelector((state: State) => state.filmsList);
   const currentGenre = useAppSelector((state: State) => state.genre);
 
-  function getFilms(genre:string){
-    if (genre === GENRE_DEFAULT){
-      return films;
-    }
-    return films.filter((film) => film.genre === currentGenre);
-  }
-  const shownFilms = getFilms(currentGenre).slice(0, currentFilms.length);
+  const filteredFilms = currentGenre === GENRE_DEFAULT ? films
+    : films.filter((film) => film.genre === currentGenre);
 
   return (
     <div className="catalog__films-list">
-      {shownFilms.map((film) => <FilmsCard key={film.id} currentFilm={film} />)}
+      {filteredFilms.map((film) => <FilmsCard key={film.id} currentFilm={film} />)}
     </div>
   );
 }

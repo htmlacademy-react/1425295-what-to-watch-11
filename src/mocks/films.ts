@@ -109,7 +109,7 @@ export const films: filmDescription[] = [
       'Kirsten Dunst '
     ],
     'runTime': 112,
-    'genre': 'Action',
+    'genre': 'Documentary',
     'released': 2016,
     'id': 5,
     'isFavorite': false,
@@ -132,7 +132,7 @@ export const films: filmDescription[] = [
       'Carrie-Anne Moss'
     ],
     'runTime': 136,
-    'genre': 'Action',
+    'genre': 'Thrillers',
     'released': 1999,
     'id': 6,
     'isFavorite': false,
