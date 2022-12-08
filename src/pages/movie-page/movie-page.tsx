@@ -2,9 +2,10 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import MoreFilms from '../../components/more-films/more-films';
 import Tabs from '../../components/tabs/tabs';
-import { filmDescription } from '../../types/film';
+import { useAppSelector } from '../../hooks';
 
-function MoviePage({films}: {films: filmDescription[]}):JSX.Element {
+function MoviePage():JSX.Element {
+  const films = useAppSelector((state) => state.filmsList);
   const { id } = useParams<string>();
   const movies = films.filter((elem) => elem.id === Number(id));
   const [{name, genre, released}] = movies;

@@ -3,10 +3,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import FilmList from '../../components/film-list/film-list';
 import GenresList from '../../components/genres-list/genres-list';
-import { filmDescription } from '../../types/film';
-import { promoFilmProps } from '../../types/promo-film';
 
-function WelcomeScreen({promoFilm, films}: {promoFilm: promoFilmProps; films: filmDescription[]}): JSX.Element {
+function WelcomeScreen(): JSX.Element {
   return(
     <React.Fragment>
       <section className="film-card">
@@ -44,10 +42,10 @@ function WelcomeScreen({promoFilm, films}: {promoFilm: promoFilmProps; films: fi
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{promoFilm.FilmsName}</h2>
+              <h2 className="film-card__title">Название фильма</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{promoFilm.Genre}</span>
-                <span className="film-card__year">{promoFilm.ReleaseDate}</span>
+                <span className="film-card__genre">Жанр фильма</span>
+                <span className="film-card__year">2014</span>
               </p>
 
               <div className="film-card__buttons">
@@ -75,7 +73,7 @@ function WelcomeScreen({promoFilm, films}: {promoFilm: promoFilmProps; films: fi
 
           <GenresList />
           <div className="catalog__films-list">
-            <FilmList films={films} />
+            <FilmList />
           </div>
 
           <div className="catalog__more">

@@ -2,15 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import App from './components/app/app';
-import {films} from './mocks/films';
-import { reviews } from './mocks/reviews';
 import { store } from './store';
+import { fetchFilmsAction } from './store/api-actions';
 
-const PromoFilm = {
-  FilmsName: 'The Grand Budapest Hotel',
-  Genre: 'Drama',
-  ReleaseDate: 2014,
-} as const;
+store.dispatch(fetchFilmsAction());
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -19,11 +15,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store = {store}>
-      <App
-        promoFilm = {PromoFilm}
-        films = {films}
-        reviews = {reviews}
-      />
+      <App />
     </Provider>
   </React.StrictMode>,
 );

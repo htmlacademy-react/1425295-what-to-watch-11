@@ -1,7 +1,6 @@
 import MessageForm from '../../components/message-form/message-form';
-import { usersReviews } from '../../types/usersReviews';
 
-function AddReview({reviews}: {reviews: usersReviews[]}): JSX.Element {
+function AddReview(): JSX.Element {
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">

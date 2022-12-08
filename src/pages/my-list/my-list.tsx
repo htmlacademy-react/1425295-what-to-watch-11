@@ -1,7 +1,6 @@
 import FilmList from '../../components/film-list/film-list';
-import { filmDescription } from '../../types/film';
 
-function MyList({films}: {films: filmDescription[]}): JSX.Element {
+function MyList(): JSX.Element {
   return(
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -29,7 +28,7 @@ function MyList({films}: {films: filmDescription[]}): JSX.Element {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <FilmList films={films} />
+        <FilmList />
       </section>
 
       <footer className="page-footer">

@@ -17,3 +17,5 @@ export type filmDescription = {
   released: number;
   isFavorite: boolean;
 };
+
+export type Films = filmDescription[];
