@@ -1,6 +1,7 @@
-import { filmDescription } from '../../types/film';
+import { useAppSelector } from '../../hooks';
 
-function Player({films}: {films: filmDescription[]}): JSX.Element {
+function Player(): JSX.Element {
+  const films = useAppSelector((state) => state.filmsList);
   return (
     <div className="player">
       <video src={films[0].videoLink} className="player__video" poster={films[0].backgroundImage}></video>

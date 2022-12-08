@@ -40,3 +40,9 @@ export const GENRES = ['All genres', 'Comedies', 'Crime', 'Documentary', 'Dramas
   'Romance', 'Sci-Fi', 'Thrillers'];
 
 export const GENRE_DEFAULT = 'All genres';
+
+export enum APIRoute {
+  Films = '/films',
+  Login = '/login',
+  Logout = '/logout',
+}
