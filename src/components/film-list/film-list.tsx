@@ -1,12 +1,7 @@
 import { GENRE_DEFAULT } from '../../const';
 import { useAppSelector } from '../../hooks';
-// import { filmDescription } from '../../types/film';
 import { State } from '../../types/state';
 import FilmsCard from '../films-card/films-card';
-
-// type FilmProps = {
-//   films: filmDescription[];
-// };
 
 function FilmList(): JSX.Element {
   const currentGenre = useAppSelector((state: State) => state.genre);

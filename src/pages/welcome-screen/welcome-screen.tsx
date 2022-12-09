@@ -3,8 +3,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import FilmList from '../../components/film-list/film-list';
 import GenresList from '../../components/genres-list/genres-list';
+import { AuthorizationStatus } from '../../const';
+import { useAppSelector } from '../../hooks';
 
 function WelcomeScreen(): JSX.Element {
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+
   return(
     <React.Fragment>
       <section className="film-card">
@@ -22,8 +26,8 @@ function WelcomeScreen(): JSX.Element {
               <span className="logo__letter logo__letter--3">W</span>
             </a>
           </div>
-
-          <ul className="user-block">
+          {authorizationStatus === AuthorizationStatus.Auth ?
+            <ul className="user-block">
             <li className="user-block__item">
               <div className="user-block__avatar">
                 <Link to={'/mylist'}><img src="img/avatar.jpg" alt="User avatar" width="63" height="63" /></Link>
@@ -32,7 +36,11 @@ function WelcomeScreen(): JSX.Element {
             <li className="user-block__item">
               <a href={'/'} className="user-block__link">Sign out</a>
             </li>
-          </ul>
+            </ul>
+            :
+          <div className="user-block">
+          <Link to={'/login'} className="user-block__link">Sign in</Link>
+          </div>}
         </header>
 
         <div className="film-card__wrap">

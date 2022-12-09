@@ -13,8 +13,8 @@ import LoadingScreen from '../spinner/spinner';
 
 function App(): JSX.Element {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
-  const isQuestionsDataLoading = useAppSelector((state) => state.isQuestionsDataLoading);
-  if (authorizationStatus === AuthorizationStatus.Auth || isQuestionsDataLoading) {
+  const isFilmsDataLoading = useAppSelector((state) => state.isFilmsDataLoading);
+  if (authorizationStatus === AuthorizationStatus.Auth || isFilmsDataLoading) {
     return (
       <LoadingScreen />
     );
