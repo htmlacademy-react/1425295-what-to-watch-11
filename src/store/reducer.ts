@@ -1,15 +1,7 @@
-// Опишите в нём:
-
 import { createReducer } from '@reduxjs/toolkit';
 import { AuthorizationStatus } from '../const';
 import { filmDescription } from '../types/film';
-import { changeGenre, loadFilms, requireAuthorization, setError, setFilmsDataLoadingStatus } from './action';
-
-// Объект начального состояния: жанр (используется для фильтров по жанру) и список фильмов.
-
-// Функцию-редьюсер. Она принимает в качестве параметров текущий state и действие (action).
-// Результатом выполнения редьюсера станет новое состояние.
-// Обратите внимание, для именования функций-редьюсеров применяются существительные.
+import { changeGenre, loadFilms, requireAuthorization, setFilmsDataLoadingStatus } from './action';
 
 type InitialState = {
   genre: string;
@@ -41,9 +33,6 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;
-    })
-    .addCase(setError, (state, action) => {
-      state.error = action.payload;
     });
 });
 

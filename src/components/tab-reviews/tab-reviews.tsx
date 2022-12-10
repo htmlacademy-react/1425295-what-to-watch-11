@@ -1,4 +1,3 @@
-
 function TabReviews(): JSX.Element {
   return(
     <div className="film-card__reviews film-card__row">
