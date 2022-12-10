@@ -1,5 +1,5 @@
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { AppRoute } from '../../const';
 import { useAppSelector } from '../../hooks';
 import AddReview from '../../pages/add-review/add-review';
 import MoviePage from '../../pages/movie-page/movie-page';
@@ -13,8 +13,8 @@ import LoadingScreen from '../spinner/spinner';
 
 function App(): JSX.Element {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
-  const isQuestionsDataLoading = useAppSelector((state) => state.isQuestionsDataLoading);
-  if (authorizationStatus === AuthorizationStatus.Auth || isQuestionsDataLoading) {
+  const isFilmsDataLoading = useAppSelector((state) => state.isFilmsDataLoading);
+  if (isFilmsDataLoading) {
     return (
       <LoadingScreen />
     );

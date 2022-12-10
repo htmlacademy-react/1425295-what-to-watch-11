@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 type ReviewForm = {
   comment: string;
@@ -11,8 +11,7 @@ function MessageForm(): JSX.Element {
     comment: '',
     rating: 0
   });
-  // eslint-disable-next-line no-console
-  useEffect(() => { console.log(formData); }, [formData]);
+
   const fieldChangeHandle = (evt: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     const {name, value} = evt.target;
     setFormData({...formData, [name]: value});
