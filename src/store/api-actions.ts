@@ -3,10 +3,10 @@ import { AxiosInstance } from 'axios';
 import { APIRoute, AuthorizationStatus } from '../const';
 import { dropToken, saveToken } from '../services/token';
 import { AuthData } from '../types/auth-data';
-import { Films } from '../types/film';
+import { filmDescription, Films } from '../types/film';
 import { AppDispatch, State } from '../types/state';
 import { UserData } from '../types/user-data';
-import { loadFilms, requireAuthorization, setFilmsDataLoadingStatus } from './action';
+import { loadFilm, loadFilms, requireAuthorization, setFilmDataLoadingStatus, setFilmsDataLoadingStatus } from './action';
 
 
 export const fetchFilmsAction = createAsyncThunk<void, undefined, {
@@ -21,6 +21,20 @@ export const fetchFilmsAction = createAsyncThunk<void, undefined, {
     dispatch(setFilmsDataLoadingStatus(false));
     dispatch(loadFilms(data));
   },
+);
+
+export const fetchFilmAction = createAsyncThunk<void, string, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/fetchFilm',
+  async (filmId, {dispatch, extra: api}) => {
+    dispatch(setFilmDataLoadingStatus(true));
+    const {data} = await api.get<filmDescription>(`${APIRoute.Films}/${filmId}`);
+    dispatch(setFilmDataLoadingStatus(false));
+    dispatch(loadFilm(data));
+  }
 );
 
 export const checkAuthAction = createAsyncThunk<void, undefined, {

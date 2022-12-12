@@ -1,15 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../../components/header/header';
 import MoreFilms from '../../components/more-films/more-films';
+import LoadingScreen from '../../components/spinner/spinner';
 import Tabs from '../../components/tabs/tabs';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { fetchFilmAction } from '../../store/api-actions';
 
 function MoviePage():JSX.Element {
   const films = useAppSelector((state) => state.filmsList);
+  const film = useAppSelector((state) => state.film);
   const { id } = useParams<string>();
-  const movies = films.filter((elem) => elem.id === Number(id));
-  const [{name, genre, released}] = movies;
+  const dispatch = useAppDispatch();
+  const isFilmLoading = useAppSelector((state) => state.isFilmDataLoading);
+
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchFilmAction(id));
+    }
+  }, [id, dispatch]);
+
+  if (isFilmLoading) {
+    return (
+      <LoadingScreen />
+    );
+  }
+
   return(
     <React.Fragment>
       <section className="film-card film-card--full">
@@ -20,14 +36,14 @@ function MoviePage():JSX.Element {
 
           <h1 className="visually-hidden">WTW</h1>
 
-          <Header />
+          <Header className='film-card__head' />
 
           <div className="film-card__wrap">
             <div className="film-card__desc">
-              <h2 className="film-card__title">{name}</h2>
+              <h2 className="film-card__title">{film.name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{genre}</span>
-                <span className="film-card__year">{released}</span>
+                <span className="film-card__genre">{film.genre}</span>
+                <span className="film-card__year">{film.released}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -57,7 +73,7 @@ function MoviePage():JSX.Element {
             </div>
 
             <div className="film-card__desc">
-              <Tabs film={films} />
+              <Tabs film={film} />
             </div>
           </div>
         </div>
