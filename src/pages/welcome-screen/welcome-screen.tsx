@@ -13,7 +13,7 @@ function WelcomeScreen(): JSX.Element {
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
-        <Header />
+        <Header className='film-card__head' />
 
         <div className="film-card__wrap">
           <div className="film-card__info">
