@@ -5,11 +5,13 @@ import MoreFilms from '../../components/more-films/more-films';
 import LoadingScreen from '../../components/spinner/spinner';
 import Tabs from '../../components/tabs/tabs';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { fetchFilmAction } from '../../store/api-actions';
+import { fetchFilmAction, fetchReviewAction, fetchReviewsAction } from '../../store/api-actions';
 
 function MoviePage():JSX.Element {
   const films = useAppSelector((state) => state.filmsList);
   const film = useAppSelector((state) => state.film);
+  const review = useAppSelector((state) => state.review);
+
   const { id } = useParams<string>();
   const dispatch = useAppDispatch();
   const isFilmLoading = useAppSelector((state) => state.isFilmDataLoading);
@@ -17,8 +19,10 @@ function MoviePage():JSX.Element {
   useEffect(() => {
     if (id) {
       dispatch(fetchFilmAction(id));
+      dispatch(fetchReviewsAction(id));
+      dispatch(fetchReviewAction(review));
     }
-  }, [id, dispatch]);
+  }, [id, review, dispatch]);
 
   if (isFilmLoading) {
     return (
