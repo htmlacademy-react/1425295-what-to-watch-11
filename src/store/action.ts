@@ -20,3 +20,17 @@ export const requireAuthorization = createAction<AuthorizationStatus>('user/requ
 export const loadFilm = createAction('film/loadFilm', (film: filmDescription) => ({
   payload: film
 }));
+
+export const addReviews = createAction('reviews/addReviews', (value: usersReviews) => ({
+  payload: value,
+}));
+
+export const addReview = createAction('review/addReview', (value: usersReview) => ({
+  payload: value,
+}));
+
+export const setReviewsLoadingStatus = createAction<boolean>('reviews/setReviewsLoadingStatus');
+
+export const setReviewLoadingStatus = createAction<boolean>('reviews/setReviewLoadingStatus');
+
+export const setReviewFormDisabled = createAction<boolean>('form/setReviewFormDisabled');
