@@ -1,6 +1,7 @@
 import {createAction} from '@reduxjs/toolkit';
 import { AuthorizationStatus } from '../const';
 import { filmDescription, Films } from '../types/film';
+import { usersReview, usersReviews } from '../types/usersReviews';
 
 export const changeGenre = createAction('film/changeGenre', (value: string) => ({
   payload: value,
