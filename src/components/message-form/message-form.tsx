@@ -71,10 +71,10 @@ function MessageForm(): JSX.Element {
 
   const handleFormSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    dispatch(setReviewFormDisabled(true));
 
     if (formData.rating && formData.comment && film) {
       const [comment, rating] = [formData.comment, formData.rating];
+      dispatch(setReviewFormDisabled(true));
       dispatch(fetchReviewAction([film.id, {comment, rating}]));
       navigate(`${APIRoute.Films}/${film.id.toString()}`);
     }

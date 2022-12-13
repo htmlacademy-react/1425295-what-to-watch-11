@@ -6,7 +6,7 @@ import LoadingScreen from '../../components/spinner/spinner';
 import Tabs from '../../components/tabs/tabs';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { fetchFilmAction, fetchReviewsAction } from '../../store/api-actions';
+import { fetchFilmAction, fetchReviewAction } from '../../store/api-actions';
 
 function MoviePage():JSX.Element {
   const films = useAppSelector((state) => state.filmsList);
@@ -19,7 +19,7 @@ function MoviePage():JSX.Element {
   useEffect(() => {
     if (id) {
       dispatch(fetchFilmAction(id));
-      dispatch(fetchReviewsAction(id));
+      // dispatch(fetchReviewAction(id));
     }
   }, [id, dispatch]);
 
