@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Header from '../../components/header/header';
 import MoreFilms from '../../components/more-films/more-films';
 import LoadingScreen from '../../components/spinner/spinner';
 import Tabs from '../../components/tabs/tabs';
+import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { fetchFilmAction } from '../../store/api-actions';
+import { fetchFilmAction, fetchReviewAction } from '../../store/api-actions';
 
 function MoviePage():JSX.Element {
   const films = useAppSelector((state) => state.filmsList);
@@ -13,10 +14,12 @@ function MoviePage():JSX.Element {
   const { id } = useParams<string>();
   const dispatch = useAppDispatch();
   const isFilmLoading = useAppSelector((state) => state.isFilmDataLoading);
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
 
   useEffect(() => {
     if (id) {
       dispatch(fetchFilmAction(id));
+      // dispatch(fetchReviewAction(id));
     }
   }, [id, dispatch]);
 
@@ -60,7 +63,7 @@ function MoviePage():JSX.Element {
                   <span>My list</span>
                   <span className="film-card__count">9</span>
                 </button>
-                <a href="add-review.html" className="btn film-card__button">Add review</a>
+                {authorizationStatus === AuthorizationStatus.Auth && <Link to={AppRoute.Review} className="btn film-card__button">Add review</Link>}
               </div>
             </div>
           </div>

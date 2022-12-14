@@ -1,7 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { AuthorizationStatus } from '../const';
 import { filmDescription } from '../types/film';
-import { changeGenre, loadFilm, loadFilms, requireAuthorization, setFilmDataLoadingStatus, setFilmsDataLoadingStatus } from './action';
+import { usersReview, usersReviews } from '../types/usersReviews';
+import { addReview, addReviews, changeGenre, loadFilm, loadFilms, requireAuthorization, setFilmDataLoadingStatus, setFilmsDataLoadingStatus, setReviewFormDisabled, setReviewsLoadingStatus } from './action';
 
 type InitialState = {
   genre: string;
@@ -11,6 +12,10 @@ type InitialState = {
   authorizationStatus: AuthorizationStatus;
   error: string | null;
   film: filmDescription;
+  review: usersReview;
+  reviews: usersReviews;
+  isReviewsDataLoading: boolean;
+  isReviewFormDisabled: boolean;
 };
 
 const initialState: InitialState = {
@@ -21,6 +26,10 @@ const initialState: InitialState = {
   authorizationStatus: AuthorizationStatus.Unknown,
   error: null,
   film: {} as filmDescription,
+  reviews: [],
+  review: {} as usersReview,
+  isReviewsDataLoading: false,
+  isReviewFormDisabled: false,
 };
 
 
@@ -43,6 +52,18 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;
+    })
+    .addCase(addReviews, (state, action) => {
+      state.reviews = action.payload;
+    })
+    .addCase(setReviewsLoadingStatus, (state, action) => {
+      state.isReviewsDataLoading = action.payload;
+    })
+    .addCase(addReview, (state, action) => {
+      state.review = action.payload;
+    })
+    .addCase(setReviewFormDisabled, (state, action) => {
+      state.isReviewFormDisabled = action.payload;
     });
 });
 
