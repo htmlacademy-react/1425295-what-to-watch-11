@@ -45,6 +45,51 @@ export enum APIRoute {
   Films = '/films',
   Login = '/login',
   Logout = '/logout',
+  Reviews = '/comments',
+  PromoFilm = '/promo'
 }
 
 export const TIMEOUT_SHOW_ERROR = 2000;
+
+export const raitingArray = [
+  {
+    id: '1',
+    value: 1
+  },
+  {
+    id: '2',
+    value: 2
+  },
+  {
+    id: '3',
+    value: 3
+  },
+  {
+    id: '4',
+    value: 4
+  },
+  {
+    id: '5',
+    value: 5
+  },
+  {
+    id: '6',
+    value: 6
+  },
+  {
+    id: '7',
+    value: 7
+  },
+  {
+    id: '8',
+    value: 8
+  },
+  {
+    id: '9',
+    value: 9
+  },
+  {
+    id: '10',
+    value: 10
+  },
+];

@@ -1,12 +1,12 @@
 import { Fragment, useState } from 'react';
 import { tabsLinks, TabsType } from '../../const';
-import { filmDescription } from '../../types/film';
+import { Film } from '../../types/film';
 import TabDetails from '../tab-details/tab-details';
 import TabOverview from '../tab-overview/tab-overview';
 import TabReviews from '../tab-reviews/tab-reviews';
 
 type FilmTabsProps = {
-  film: filmDescription;
+  film: Film;
 }
 
 function Tabs({film}: FilmTabsProps): JSX.Element {

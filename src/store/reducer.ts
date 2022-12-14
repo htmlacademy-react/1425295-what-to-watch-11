@@ -1,8 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { AuthorizationStatus } from '../const';
-import { filmDescription } from '../types/film';
+import { filmDescription, Films } from '../types/film';
 import { usersReview, usersReviews } from '../types/usersReviews';
-import { addReview, addReviews, changeGenre, loadFilm, loadFilms, requireAuthorization, setFilmDataLoadingStatus, setFilmsDataLoadingStatus, setReviewFormDisabled, setReviewsLoadingStatus } from './action';
+import { addReview, addReviews, changeGenre, loadFilm, loadFilms, loadPromoFilm, loadSimilarFilms, requireAuthorization, setFilmDataLoadingStatus, setFilmsDataLoadingStatus, setReviewFormDisabled, setReviewsLoadingStatus } from './action';
 
 type InitialState = {
   genre: string;
@@ -16,6 +16,8 @@ type InitialState = {
   reviews: usersReviews;
   isReviewsDataLoading: boolean;
   isReviewFormDisabled: boolean;
+  similarFilms: Films;
+  promoFilm: filmDescription;
 };
 
 const initialState: InitialState = {
@@ -30,6 +32,8 @@ const initialState: InitialState = {
   review: {} as usersReview,
   isReviewsDataLoading: false,
   isReviewFormDisabled: false,
+  similarFilms: [],
+  promoFilm: {} as filmDescription,
 };
 
 
@@ -64,6 +68,12 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setReviewFormDisabled, (state, action) => {
       state.isReviewFormDisabled = action.payload;
+    })
+    .addCase(loadSimilarFilms, (state, action) => {
+      state.similarFilms = action.payload;
+    })
+    .addCase(loadPromoFilm, (state, action) => {
+      state.promoFilm = action.payload;
     });
 });
 

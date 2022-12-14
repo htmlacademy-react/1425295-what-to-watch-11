@@ -1,8 +1,8 @@
 import React from 'react';
-import { filmDescription } from '../../types/film';
+import { Film } from '../../types/film';
 
 type OverviewProps = {
-  film: filmDescription;
+  film: Film;
 }
 
 
