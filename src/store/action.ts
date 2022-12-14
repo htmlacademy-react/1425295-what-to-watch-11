@@ -35,3 +35,7 @@ export const setReviewsLoadingStatus = createAction<boolean>('reviews/setReviews
 export const setReviewLoadingStatus = createAction<boolean>('reviews/setReviewLoadingStatus');
 
 export const setReviewFormDisabled = createAction<boolean>('form/setReviewFormDisabled');
+
+export const loadSimilarFilms = createAction<Films>('film/loadSimilarFilms');
+
+export const loadPromoFilm = createAction<filmDescription>('film/loadPromoFilm');

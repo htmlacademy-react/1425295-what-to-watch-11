@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { filmDescription } from '../../types/film';
@@ -27,11 +26,10 @@ function FilmsCard({currentFilm}: FilmProps): JSX.Element {
           : <img src={currentFilm.previewImage} alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />}
       </div>
       <h3 className="small-film-card__title">
-        <Link className="small-film-card__link" to={`films/${currentFilm.id}`}>{currentFilm.name}</Link>
+        <Link className="small-film-card__link" to={`/films/${currentFilm.id}`}>{currentFilm.name}</Link>
       </h3>
     </article>
   );
 }
 
 export default FilmsCard;
-

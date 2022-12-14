@@ -1,7 +1,7 @@
 import { FormEvent, Fragment } from 'react';
 import { ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { APIRoute } from '../../const';
+import { APIRoute, raitingArray } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { setReviewFormDisabled } from '../../store/action';
 import { fetchReviewAction } from '../../store/api-actions';
@@ -16,48 +16,6 @@ function MessageForm(): JSX.Element {
   const navigate = useNavigate();
   const film = useAppSelector((state) => state.film);
   const isReviewFormDisabled = useAppSelector((state) => state.isReviewFormDisabled);
-  const raitingArray = [
-    {
-      id: '1',
-      value: 1
-    },
-    {
-      id: '2',
-      value: 2
-    },
-    {
-      id: '3',
-      value: 3
-    },
-    {
-      id: '4',
-      value: 4
-    },
-    {
-      id: '5',
-      value: 5
-    },
-    {
-      id: '6',
-      value: 6
-    },
-    {
-      id: '7',
-      value: 7
-    },
-    {
-      id: '8',
-      value: 8
-    },
-    {
-      id: '9',
-      value: 9
-    },
-    {
-      id: '10',
-      value: 10
-    },
-  ];
 
   const [formData, setFormData] = useState<ReviewForm>({
     comment: '',

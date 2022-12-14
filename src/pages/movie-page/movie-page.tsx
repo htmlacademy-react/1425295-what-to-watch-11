@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import Footer from '../../components/footer/footer';
 import Header from '../../components/header/header';
 import MoreFilms from '../../components/more-films/more-films';
 import LoadingScreen from '../../components/spinner/spinner';
 import Tabs from '../../components/tabs/tabs';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { fetchFilmAction, fetchReviewAction } from '../../store/api-actions';
+import { fetchFilmAction, fetchReviewsAction, fetchSimilarFilmsAction } from '../../store/api-actions';
 
 function MoviePage():JSX.Element {
-  const films = useAppSelector((state) => state.filmsList);
   const film = useAppSelector((state) => state.film);
   const { id } = useParams<string>();
   const dispatch = useAppDispatch();
@@ -19,7 +19,9 @@ function MoviePage():JSX.Element {
   useEffect(() => {
     if (id) {
       dispatch(fetchFilmAction(id));
-      // dispatch(fetchReviewAction(id));
+      dispatch(fetchReviewsAction(id));
+      dispatch(fetchSimilarFilmsAction(id));
+
     }
   }, [id, dispatch]);
 
@@ -34,7 +36,7 @@ function MoviePage():JSX.Element {
       <section className="film-card film-card--full">
         <div className="film-card__hero">
           <div className="film-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+            <img src={film.backgroundImage} alt={film.name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -72,7 +74,7 @@ function MoviePage():JSX.Element {
         <div className="film-card__wrap film-card__translate-top">
           <div className="film-card__info">
             <div className="film-card__poster film-card__poster--big">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={film.posterImage} alt="The Grand Budapest Hotel poster" width="218" height="327" />
             </div>
 
             <div className="film-card__desc">
@@ -86,22 +88,9 @@ function MoviePage():JSX.Element {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <MoreFilms films={films}/>
+          <MoreFilms />
         </section>
-
-        <footer className="page-footer">
-          <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </React.Fragment>
   );
