@@ -7,7 +7,7 @@ import LoadingScreen from '../../components/spinner/spinner';
 import Tabs from '../../components/tabs/tabs';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { fetchFilmAction, fetchReviewsAction, fetchSimilarFilmsAction } from '../../store/api-actions';
+import { fetchFilmAction, fetchFavouriteMyListAction, fetchReviewsAction, fetchSimilarFilmsAction } from '../../store/api-actions';
 
 function MoviePage():JSX.Element {
   const film = useAppSelector((state) => state.film);
@@ -15,6 +15,10 @@ function MoviePage():JSX.Element {
   const dispatch = useAppDispatch();
   const isFilmLoading = useAppSelector((state) => state.isFilmDataLoading);
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+
+  const onClick = () => {
+    dispatch(fetchFavouriteMyListAction());
+  };
 
   useEffect(() => {
     if (id) {
@@ -58,7 +62,7 @@ function MoviePage():JSX.Element {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list film-card__button" type="button">
+                <button className="btn btn--list film-card__button" type="button" onClick={onClick}>
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"></use>
                   </svg>

@@ -1,11 +1,11 @@
 import { GENRE_DEFAULT } from '../../const';
 import { useAppSelector } from '../../hooks';
+import { Films } from '../../types/film';
 import { State } from '../../types/state';
 import FilmsCard from '../films-card/films-card';
 
-function FilmList(): JSX.Element {
+function FilmList({films}: {films:Films}): JSX.Element {
   const currentGenre = useAppSelector((state: State) => state.genre);
-  const films = useAppSelector((state) => state.filmsList);
 
   const filteredFilms = currentGenre === GENRE_DEFAULT ? films
     : films.filter((film) => film.genre === currentGenre);

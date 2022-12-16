@@ -11,6 +11,10 @@ export const loadFilms = createAction('film/loadFilms', (value: Films) => ({
   payload: value,
 }));
 
+export const loadMyListFilms = createAction('film/loadMyListFilms', (value: Films) => ({
+  payload: value,
+}));
+
 export const setFilmsDataLoadingStatus = createAction<boolean>('data/setFilmsDataLoadingStatus');
 
 export const setFilmDataLoadingStatus = createAction<boolean>('data/setFilmDataLoadingStatus');
@@ -39,3 +43,13 @@ export const setReviewFormDisabled = createAction<boolean>('form/setReviewFormDi
 export const loadSimilarFilms = createAction<Films>('film/loadSimilarFilms');
 
 export const loadPromoFilm = createAction<filmDescription>('film/loadPromoFilm');
+
+export const setFavoriteFilmsAction = createAction<Films>('data/setMyListFilmStatus');
+
+export const setFavouriteFilmStatus = createAction<Film>('data/setMyListFilmStatus');
+
+
+
+
+
+

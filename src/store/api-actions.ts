@@ -132,3 +132,29 @@ export const fetchPromoFilmAction = createAsyncThunk<void, undefined, {
     dispatch(loadPromoFilm(data));
   },
 );
+
+export const fetchFavouriteMyListAction = createAsyncThunk<void, undefined, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/fetchFilms',
+  async (_arg, {dispatch, extra: api}) => {
+    dispatch(setFilmsDataLoadingStatus(true));
+    const {data} = await api.get<Films>(APIRoute.Favourite);
+    dispatch(setFilmsDataLoadingStatus(false));
+    dispatch(loadFilms(data));
+  },
+);
+
+export const postFavouriteStatusAction = createAsyncThunk<void, [number, boolean], {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/fetchStatus',
+  async ([id, status], {dispatch, extra: api}) => {
+    await api.get<Films>(`${APIRoute.Favourite}/${id}/${Number(status)}`);
+    dispatch(fetchFavouriteMyListAction());
+  },
+);

@@ -2,7 +2,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import { AuthorizationStatus } from '../const';
 import { filmDescription, Films } from '../types/film';
 import { usersReview, usersReviews } from '../types/usersReviews';
-import { addReview, addReviews, changeGenre, loadFilm, loadFilms, loadPromoFilm, loadSimilarFilms, requireAuthorization, setFilmDataLoadingStatus, setFilmsDataLoadingStatus, setReviewFormDisabled, setReviewsLoadingStatus } from './action';
+import { addReview, addReviews, changeGenre, loadFilm, loadFilms, loadMyListFilms, loadPromoFilm, loadSimilarFilms, requireAuthorization, setFavoriteFilmsAction, setFavouriteFilmStatus, setFilmDataLoadingStatus, setFilmsDataLoadingStatus, setReviewFormDisabled, setReviewsLoadingStatus } from './action';
 
 type InitialState = {
   genre: string;
@@ -18,6 +18,8 @@ type InitialState = {
   isReviewFormDisabled: boolean;
   similarFilms: Films;
   promoFilm: filmDescription;
+  favouriteList: Films;
+  filmStatus: filmDescription | undefined;
 };
 
 const initialState: InitialState = {
@@ -34,6 +36,9 @@ const initialState: InitialState = {
   isReviewFormDisabled: false,
   similarFilms: [],
   promoFilm: {} as filmDescription,
+  favouriteList: [],
+  filmStatus: undefined,
+
 };
 
 
@@ -74,6 +79,15 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(loadPromoFilm, (state, action) => {
       state.promoFilm = action.payload;
+    })
+    .addCase(loadMyListFilms, (state, action) => {
+      state.favouriteList = action.payload;
+    })
+    .addCase(setFavoriteFilmsAction, (state, action) => {
+      state.favouriteList = action.payload;
+    })
+    .addCase(setFavouriteFilmStatus, (state, action) => {
+
     });
 });
 
