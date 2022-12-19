@@ -2,7 +2,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import { AuthorizationStatus } from '../const';
 import { filmDescription, Films } from '../types/film';
 import { usersReview, usersReviews } from '../types/usersReviews';
-import { addReview, addReviews, changeGenre, loadFilm, loadFilms, loadMyListFilms, loadPromoFilm, loadSimilarFilms, requireAuthorization, setFavoriteFilmsAction, setFavouriteFilmStatus, setFilmDataLoadingStatus, setFilmsDataLoadingStatus, setReviewFormDisabled, setReviewsLoadingStatus } from './action';
+import { addReview, addReviews, changeGenre, loadFilm, loadFilms, loadMyListFilms, loadPromoFilm, loadSimilarFilms, requireAuthorization, setFavoriteFilmsAction, setFilmDataLoadingStatus, setFilmsDataLoadingStatus, setReviewFormDisabled, setReviewsLoadingStatus } from './action';
 
 type InitialState = {
   genre: string;
@@ -85,9 +85,6 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setFavoriteFilmsAction, (state, action) => {
       state.favouriteList = action.payload;
-    })
-    .addCase(setFavouriteFilmStatus, (state, action) => {
-
     });
 });
 

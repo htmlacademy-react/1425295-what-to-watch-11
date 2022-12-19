@@ -1,5 +1,5 @@
 import { useAppSelector } from '../../hooks';
-import FilmButtons from '../film-buttons/film-buttons';
+import Breadcrumbs from '../breadcrumbs/breadcrumbs';
 import Header from '../header/header';
 
 function PromoFilm(): JSX.Element {
@@ -25,7 +25,7 @@ function PromoFilm(): JSX.Element {
               <span className="film-card__genre">{promoFilm.genre}</span>
               <span className="film-card__year">{promoFilm.released}</span>
             </p>
-            <FilmButtons />
+            <Breadcrumbs />
           </div>
         </div>
       </div>

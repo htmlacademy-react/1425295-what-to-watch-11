@@ -1,10 +1,10 @@
-import FilmList from '../../components/film-list/film-list';
+import FilmsCard from '../../components/films-card/films-card';
 import Footer from '../../components/footer/footer';
 import Header from '../../components/header/header';
 import { useAppSelector } from '../../hooks';
 
 function MyList(): JSX.Element {
-  const films = useAppSelector((state) => state.similarFilms);
+  const films = useAppSelector((state) => state.favouriteList);
 
 
   return(
@@ -18,7 +18,9 @@ function MyList(): JSX.Element {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <FilmList films={films} />
+        <div className="catalog__films-list">
+          {films.map((film) => <FilmsCard key={film.id} currentFilm={film} />)}
+        </div>
       </section>
 
       <Footer />

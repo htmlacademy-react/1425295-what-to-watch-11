@@ -7,7 +7,7 @@ import { filmDescription, Films } from '../types/film';
 import { AppDispatch, State } from '../types/state';
 import { UserData } from '../types/user-data';
 import { AddReviewType, usersReviews } from '../types/usersReviews';
-import { addReviews, loadFilm, loadFilms, loadPromoFilm, loadSimilarFilms, requireAuthorization, setFilmDataLoadingStatus, setFilmsDataLoadingStatus, setReviewsLoadingStatus } from './action';
+import { addReviews, loadFilm, loadFilms, loadPromoFilm, loadSimilarFilms, requireAuthorization, setFavoriteFilmsAction, setFilmDataLoadingStatus, setFilmsDataLoadingStatus, setReviewsLoadingStatus } from './action';
 
 
 export const fetchFilmsAction = createAsyncThunk<void, undefined, {
@@ -140,21 +140,18 @@ export const fetchFavouriteMyListAction = createAsyncThunk<void, undefined, {
 }>(
   'data/fetchFilms',
   async (_arg, {dispatch, extra: api}) => {
-    dispatch(setFilmsDataLoadingStatus(true));
     const {data} = await api.get<Films>(APIRoute.Favourite);
-    dispatch(setFilmsDataLoadingStatus(false));
-    dispatch(loadFilms(data));
+    dispatch(setFavoriteFilmsAction(data));
   },
 );
 
-export const postFavouriteStatusAction = createAsyncThunk<void, [number, boolean], {
+export const postFavouriteStatusAction = createAsyncThunk<void, [number, number], {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
   'data/fetchStatus',
   async ([id, status], {dispatch, extra: api}) => {
-    await api.get<Films>(`${APIRoute.Favourite}/${id}/${Number(status)}`);
-    dispatch(fetchFavouriteMyListAction());
+    await api.get<Films>(`${APIRoute.Favourite}/${id}/${status}`);
   },
 );
