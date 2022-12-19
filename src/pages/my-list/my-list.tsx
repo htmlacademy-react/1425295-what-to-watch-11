@@ -1,8 +1,12 @@
-import FilmList from '../../components/film-list/film-list';
+import FilmsCard from '../../components/films-card/films-card';
 import Footer from '../../components/footer/footer';
 import Header from '../../components/header/header';
+import { useAppSelector } from '../../hooks';
 
 function MyList(): JSX.Element {
+  const films = useAppSelector((state) => state.favouriteList);
+
+
   return(
     <div className="user-page">
       <Header className='user-page__head'>
@@ -14,7 +18,9 @@ function MyList(): JSX.Element {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <FilmList />
+        <div className="catalog__films-list">
+          {films.map((film) => <FilmsCard key={film.id} currentFilm={film} />)}
+        </div>
       </section>
 
       <Footer />

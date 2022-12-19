@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import Breadcrumbs from '../../components/breadcrumbs/breadcrumbs';
 import Footer from '../../components/footer/footer';
 import Header from '../../components/header/header';
 import MoreFilms from '../../components/more-films/more-films';
 import LoadingScreen from '../../components/spinner/spinner';
 import Tabs from '../../components/tabs/tabs';
-import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchFilmAction, fetchReviewsAction, fetchSimilarFilmsAction } from '../../store/api-actions';
 
@@ -14,7 +14,7 @@ function MoviePage():JSX.Element {
   const { id } = useParams<string>();
   const dispatch = useAppDispatch();
   const isFilmLoading = useAppSelector((state) => state.isFilmDataLoading);
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+
 
   useEffect(() => {
     if (id) {
@@ -50,23 +50,8 @@ function MoviePage():JSX.Element {
                 <span className="film-card__genre">{film.genre}</span>
                 <span className="film-card__year">{film.released}</span>
               </p>
+              <Breadcrumbs />
 
-              <div className="film-card__buttons">
-                <button className="btn btn--play film-card__button" type="button">
-                  <svg viewBox="0 0 19 19" width="19" height="19">
-                    <use xlinkHref="#play-s"></use>
-                  </svg>
-                  <span>Play</span>
-                </button>
-                <button className="btn btn--list film-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
-                  <span>My list</span>
-                  <span className="film-card__count">9</span>
-                </button>
-                {authorizationStatus === AuthorizationStatus.Auth && <Link to={AppRoute.Review} className="btn film-card__button">Add review</Link>}
-              </div>
             </div>
           </div>
         </div>
@@ -76,7 +61,6 @@ function MoviePage():JSX.Element {
             <div className="film-card__poster film-card__poster--big">
               <img src={film.posterImage} alt="The Grand Budapest Hotel poster" width="218" height="327" />
             </div>
-
             <div className="film-card__desc">
               <Tabs film={film} />
             </div>

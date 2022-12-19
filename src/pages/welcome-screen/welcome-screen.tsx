@@ -2,8 +2,10 @@ import FilmList from '../../components/film-list/film-list';
 import Footer from '../../components/footer/footer';
 import GenresList from '../../components/genres-list/genres-list';
 import PromoFilm from '../../components/promo-film/promo-film';
+import { useAppSelector } from '../../hooks';
 
 function WelcomeScreen(): JSX.Element {
+  const films = useAppSelector((state) => state.filmsList);
 
   return(
     <>
@@ -14,7 +16,7 @@ function WelcomeScreen(): JSX.Element {
 
           <GenresList />
           <div className="catalog__films-list">
-            <FilmList />
+            <FilmList films={films}/>
           </div>
 
           <div className="catalog__more">
