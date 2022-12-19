@@ -34,8 +34,7 @@ export enum TabsType {
   Reviews = 'Reviews',
 }
 
-export const GENRES = ['All genres', 'Comedies', 'Crime', 'Documentary', 'Dramas', 'Horror', 'Kids & Family',
-  'Romance', 'Sci-Fi', 'Thrillers'];
+export const GENRES = ['All genres', 'Comedy', 'Crime', 'Adventure', 'Drama', 'Action', 'Fantasy', 'Thriller'];
 
 export const GENRE_DEFAULT = 'All genres';
 

@@ -59,7 +59,7 @@ export const fetchReviewAction = createAsyncThunk<void, [number, AddReviewType],
 }>(
   'data/review',
   async ([filmId, {comment, rating}], {dispatch, extra: api}) => {
-    await api.post<AddReviewType>(`${APIRoute.Reviews}/${filmId}, {comment, rating}`);
+    await api.post<AddReviewType>(`${APIRoute.Reviews}/${filmId}`, {comment, rating});
   },
 );
 
@@ -126,9 +126,7 @@ export const fetchPromoFilmAction = createAsyncThunk<void, undefined, {
 }>(
   'data/fetchFilms',
   async (_arg, {dispatch, extra: api}) => {
-    dispatch(setFilmsDataLoadingStatus(true));
     const {data} = await api.get<filmDescription>(APIRoute.PromoFilm);
-    dispatch(setFilmsDataLoadingStatus(false));
     dispatch(loadPromoFilm(data));
   },
 );
@@ -152,6 +150,6 @@ export const postFavouriteStatusAction = createAsyncThunk<void, [number, number]
 }>(
   'data/fetchStatus',
   async ([id, status], {dispatch, extra: api}) => {
-    await api.get<Films>(`${APIRoute.Favourite}/${id}/${status}`);
+    await api.post<Films>(`${APIRoute.Favourite}/${id}/${status}`);
   },
 );
