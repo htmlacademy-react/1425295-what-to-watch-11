@@ -1,11 +1,19 @@
+import { useEffect } from 'react';
 import FilmList from '../../components/film-list/film-list';
 import Footer from '../../components/footer/footer';
 import GenresList from '../../components/genres-list/genres-list';
 import PromoFilm from '../../components/promo-film/promo-film';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { fetchFavouriteMyListAction, fetchPromoFilmAction } from '../../store/api-actions';
 
 function WelcomeScreen(): JSX.Element {
   const films = useAppSelector((state) => state.filmsList);
+  const dispatch = useAppDispatch();
+
+  useEffect(()=> {
+    dispatch(fetchPromoFilmAction());
+    dispatch(fetchFavouriteMyListAction());
+  }, [dispatch]);
 
   return(
     <>

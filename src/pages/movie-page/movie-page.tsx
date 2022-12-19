@@ -50,7 +50,7 @@ function MoviePage():JSX.Element {
                 <span className="film-card__genre">{film.genre}</span>
                 <span className="film-card__year">{film.released}</span>
               </p>
-              <Breadcrumbs />
+              <Breadcrumbs film={film} />
 
             </div>
           </div>

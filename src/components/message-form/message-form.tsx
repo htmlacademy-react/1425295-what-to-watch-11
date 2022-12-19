@@ -34,7 +34,7 @@ function MessageForm(): JSX.Element {
       const [comment, rating] = [formData.comment, formData.rating];
       dispatch(setReviewFormDisabled(true));
       dispatch(fetchReviewAction([film.id, {comment, rating}]));
-      navigate(`${APIRoute.Films}/${film.id.toString()}`);
+      navigate(`${APIRoute.Films}/${film.id}`);
     }
   };
 

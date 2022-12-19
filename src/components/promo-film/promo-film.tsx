@@ -25,7 +25,7 @@ function PromoFilm(): JSX.Element {
               <span className="film-card__genre">{promoFilm.genre}</span>
               <span className="film-card__year">{promoFilm.released}</span>
             </p>
-            <Breadcrumbs />
+            <Breadcrumbs film={promoFilm}/>
           </div>
         </div>
       </div>

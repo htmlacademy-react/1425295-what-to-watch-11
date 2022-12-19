@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchFavouriteMyListAction, postFavouriteStatusAction } from '../../store/api-actions';
+import { filmDescription } from '../../types/film';
 
-function Breadcrumbs():JSX.Element {
-  const film = useAppSelector((state) => state.film);
+type BreadcrumbsProps = {
+  film: filmDescription;
+}
+
+function Breadcrumbs({film}: BreadcrumbsProps):JSX.Element {
   const films = useAppSelector((state) => state.favouriteList);
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
   const dispatch = useAppDispatch();
