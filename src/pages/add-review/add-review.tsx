@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Logo from '../../components/logo/logo';
 import MessageForm from '../../components/message-form/message-form';
-import LoadingScreen from '../../components/spinner/spinner';
+import LoadingScreen from '../../components/loading-screen/loading-screen';
 import UserBlock from '../../components/user-block/user-block';
 import { AppRoute } from '../../const';
 import { useAppSelector } from '../../hooks';

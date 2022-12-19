@@ -4,7 +4,7 @@ import Breadcrumbs from '../../components/breadcrumbs/breadcrumbs';
 import Footer from '../../components/footer/footer';
 import Header from '../../components/header/header';
 import MoreFilms from '../../components/more-films/more-films';
-import LoadingScreen from '../../components/spinner/spinner';
+import LoadingScreen from '../../components/loading-screen/loading-screen';
 import Tabs from '../../components/tabs/tabs';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchFilmAction, fetchReviewsAction, fetchSimilarFilmsAction } from '../../store/api-actions';
