@@ -13,6 +13,7 @@ function SignIn():JSX.Element {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const pattern = '[A-Za-z]+[0-9]|[0-9]+[A-Za-z]';
 
   useEffect(() => {
     if(authorizationStatus === AuthorizationStatus.Auth) {
@@ -27,7 +28,7 @@ function SignIn():JSX.Element {
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
 
-    if (loginRef.current !== null && passwordRef.current !== null) {
+    if (loginRef.current !== null && passwordRef.current !== null && passwordRef.current.value !== '') {
       onSubmit({
         login: loginRef.current.value,
         password: passwordRef.current.value,
@@ -74,6 +75,7 @@ function SignIn():JSX.Element {
                 placeholder="Password"
                 name="user-password"
                 id="user-password"
+                pattern={pattern}
               />
               <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
             </div>

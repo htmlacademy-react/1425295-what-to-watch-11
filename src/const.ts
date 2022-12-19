@@ -13,8 +13,6 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
-export const DEFAULT_ACTIVE_CARD = 0;
-
 export const tabsLinks = [
   {
     name: 'Overview',
@@ -49,8 +47,6 @@ export enum APIRoute {
   PromoFilm = '/promo',
   Favourite = '/favorite',
 }
-
-export const TIMEOUT_SHOW_ERROR = 2000;
 
 export const raitingArray = [
   {

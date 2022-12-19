@@ -6,10 +6,10 @@ import MoviePage from '../../pages/movie-page/movie-page';
 import MyList from '../../pages/my-list/my-list';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import Player from '../../pages/player/player';
-import Registration from '../../pages/registration/registration';
+import Registration from '../../pages/sign-in/sign-in';
 import WelcomeScreen from '../../pages/welcome-screen/welcome-screen';
 import PrivateRoute from '../private-route/private-route';
-import LoadingScreen from '../spinner/spinner';
+import LoadingScreen from '../loading-screen/loading-screen';
 
 function App(): JSX.Element {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
